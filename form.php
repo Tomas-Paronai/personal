@@ -15,6 +15,7 @@
 	
 	include 'test.php';
 	
+	
 	$name = $email = $city = "";
 	$nameErr = $emailErr = $cityErr = "";
 	
@@ -100,11 +101,16 @@
 		</form>
 		
 		<?php
+			$sec = new Security();
+			$sec->name = $_POST['name'];
+		
 			if($name!=null && $email!=null && $city!=null){
 				echo $name . "<br>";
 				echo $email . "<br>";
 				echo $city . "<br>";
-				echo $_SERVER['SERVER_NAME'];
+				echo $_SERVER['SERVER_NAME'] . "<br>";
+				
+				
 			}			
 		?>
 	</body>
