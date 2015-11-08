@@ -1,14 +1,9 @@
 <?php
 	
-
-
 class Security{
-		
-	private $servername;
-	private $database;
-	
-	public function __construct($servername){
-		$this->servername = $servername;
+			
+	public function __construct(){
+
 	}
 	
 	public function checkUser($usermail, $password){

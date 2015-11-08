@@ -92,9 +92,9 @@
 				
 				<?php
 					
-				include 'php/valid.php';
+				include 'API/valid.php';
 				
-				$security = new Security("localhost");
+				$security = new Security();
 				$usermail = $password = "";
 				$loginErr = $nameErr = $passErr = "";
 				
@@ -114,12 +114,10 @@
 						$passErr = "Enter password";
 					}
 						
-					if($security->checkUser($usermail, $password) == false){
-						$loginErr = "Invalid Login!";
+					if($usermail != null && $password != null){
+						//to do login
 					}
-					else {
-						$loginErr = "Login succesfull!";
-					}
+					
 				}
 					
 				?>
