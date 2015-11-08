@@ -53,8 +53,10 @@
 
                 <!-- BEGGINING OF THE SAERCH BAR-->
                 <div class="search-container">
-                    <input type="text" name="search" class="search">
-                    <button class="search-button"></button>
+                        <form  method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>"  id="searchform">
+                            <input type="text" name="search" class="search">
+                            <button class="search-button" name="search-button" value="Search"></button>
+                        </form>
                 </div>
                 <!-- ENDING OF THE SAERCH BAR--->
 
@@ -126,11 +128,12 @@
                     <form action="" method="POST">
                         <ul class="login-container"> <!-- enter here login error -->
                             <li class="login-item"><label for="usermail">E-mail:</label><span><?php echo $loginErr?></span></li>
-                            <li class="login-item"><input type="text" name="usermail" placeholder="Email..."><span class="error"><?php echo $nameErr?></span></li>
+                            <li class="login-item"><input type="text" name="usermail" placeholder="Email..." maxlength="40"><span class="error"><?php echo $nameErr?></span></li>
                             <li class="login-item"><label for="usermail">Password:</label></li>
-                            <li class="login-item"><input type="password" name="password" placeholder="Pasword..."><span class="error"><?php echo $passErr?></span></li>
-                            <li class="login-item">Do you want to stay logged in ? <input type="checkbox" name="stayLoggedin" value="true"></li>
-                            <li class="login-item"><a href="#">Not registered yet ?</a></li>
+                            <li class="login-item"><input type="password" name="password" placeholder="Pasword..." maxlength="30"><span class="error"><?php echo $passErr?></span></li>
+                            <li class="login-item"><span class="login-dialogue">Do you want to stay logged in ?</span><input type="checkbox" name="stayLoggedin" value="true"></li>
+                            <li class="login-item"><a href="?page=forgottenPass">Forgot your password ?</a></li>
+                            <li class="login-item"><a href="?page=registration">Not registered yet ?</a></li>
                             <li class="login-item"><input type="submit" value="Log in"></li>
                         </ul>
                     </form>
@@ -147,7 +150,7 @@
                 </div>
 
                 <div class="frame-content">
-                    <p>Sem môžeš hodiť embeded video YEAH!</p>
+                    <iframe width="220" height="220" src="https://www.youtube.com/embed/DvOldr9Cjc8" frameborder="0" allowfullscreen></iframe>
                 </div>
 
             </div>
@@ -159,12 +162,24 @@
         <!-- BEGGINING OF MAIN CONTENT -->
         <main>
 
-            <div class="carousel-container">
-                <span class="carousel-content">Fancy Carousel is going to be here</span>
-            </div>
+            <?php
+                if(isset($_GET['page']))
+                {
+                    $page = $_GET['page'];
+                }
+                else {
+                    $page = "";
+                }
 
-            <div class="product-tabs">
-            </div>
+                if($page == "" || $page == "main-page")
+                {
+                    include ("pages/main-page.php");
+                }
+                else if($page == "registration")
+                {
+                    include ("pages/registration.php");
+                }
+            ?>
 
         </main>
         <!-- ENDING OF MAIN CONTENT -->
@@ -174,6 +189,15 @@
 
     <!-- BEGGINING OF THE PAGE FOOOTER-->
     <footer id="main-footer">
+        <div id="footer-nav">
+            <a href="#" class="faq-help-button">FAQ</a>
+            <span>/</span>
+            <a href="#" class="faq-help-button">Help</a>
+            <a href="https://www.facebook.com/GYMBOSAK/?fref=ts" id="fb"></a>
+        </div>
+        <div id="copyright">
+            <span>Copyright &#169; 2015 Project X Inc. All Rights Reserved. User Agreement, Privacy and Cookies.</span>
+        </div>
     </footer>
     <!-- ENDING OF THE PAGE FOOTER-->
 
