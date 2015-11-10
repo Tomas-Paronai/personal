@@ -12,6 +12,11 @@ $handlerDB->bind(":name","Tomas");
 $handlerDB->bind(":userid","1");
 $handlerDB->execute();
 
+$handlerDB->query('INSERT INTO users (name,password) VALUES (:name,:password) ');
+$handlerDB->bind(":name","Tomas");
+$handlerDB->bind(":password","blanka");
+$handlerDB->execute();
+
 $handlerDB->query('SELECT*FROM users');
 
 $users = array();
