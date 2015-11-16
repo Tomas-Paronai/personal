@@ -2,18 +2,18 @@
 
 include 'Database.php';
 $title = 'users';
-$name = 'Tomas';
+$holazena = "Tomas";
 
 
 $handlerDB = new DBHandler();	
 
-$handlerDB->query('UPDATE users SET name=:name WHERE userid=:userid');
+/*$handlerDB->query('UPDATE users SET name=:name WHERE userid=:userid');
 $handlerDB->bind(":name","Tomas");
 $handlerDB->bind(":userid","1");
-$handlerDB->execute();
+$handlerDB->execute();*/
 
-$handlerDB->query('INSERT INTO users (name,password) VALUES (:name,:password) ');
-$handlerDB->bind(":name","Tomas");
+$handlerDB->query('INSERT INTO users (`name`,`password`) VALUES (:name,:password) ');
+$handlerDB->bind(":name",$holazena);
 $handlerDB->bind(":password","blanka");
 $handlerDB->execute();
 
